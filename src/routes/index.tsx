@@ -4,6 +4,17 @@ import hero from "@/assets/hero.jpg";
 import cabin from "@/assets/cabin.jpg";
 import catchImg from "@/assets/catch.jpg";
 import boat from "@/assets/boat.jpg";
+import aForest from "@/assets/about-forest.jpg";
+import aFishing from "@/assets/about-fishing.jpg";
+import aBoats from "@/assets/about-boats.jpg";
+import aBanya from "@/assets/about-banya.jpg";
+
+const features = [
+  { t: "Тишина и лес", img: aForest },
+  { t: "Рыбные места", img: aFishing },
+  { t: "Лодки и снасти", img: aBoats },
+  { t: "Русская баня", img: aBanya },
+];
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -69,8 +80,11 @@ function Index() {
       <Section id="about" title="О месте">
         <p className="max-w-2xl text-lg text-muted-foreground">Три деревянных домика на тихом берегу, в часе езды от города. Ни шума трассы, ни соседей за забором — только лес, река и треск дров в печке.</p>
         <div className="mt-10 grid grid-cols-2 gap-4 md:grid-cols-4">
-          {["Тишина и лес", "Рыбные места", "Лодки и снасти", "Русская баня"].map((f) => (
-            <div key={f} className="rounded-2xl bg-muted p-5 font-medium">{f}</div>
+          {features.map((f) => (
+            <div key={f.t} className="overflow-hidden rounded-2xl bg-muted">
+              <img src={f.img} alt={f.t} loading="lazy" width={768} height={768} className="aspect-square w-full object-cover" />
+              <div className="p-4 font-medium">{f.t}</div>
+            </div>
           ))}
         </div>
       </Section>
